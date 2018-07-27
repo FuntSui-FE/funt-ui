@@ -45,16 +45,15 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        use: [
-          {
-            loader: 'vue-loader',
-            options: {
-              compilerOptions: {
-                preserveWhitespace: false
-              }
-            }
-          }
-        ]
+        loader: 'vue-loader',
+        options: {
+          //loaders
+          loaders: {
+            css: ['vue-style-loader', 'css-loader'],
+            less: ['vue-style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+          },
+          cssSourceMap: true
+        }
       },
       {
         test: /\.js$/,

@@ -2,11 +2,22 @@
   <div ref="wrapper" class="fs-scroll-wrapper">
     <div class="fs-scroll-content">
       <slot></slot>
+      <div class="fs-pullup">
+        <slot name="pullup" v-if="isPullingUp">
+          <loading type="spinner" />
+        </slot>
+      </div>
     </div>
     <div class="fs-pulldown" ref="pulldown" :style="pullDownStyle">
       <slot name="pulldown">
         <loading v-if="isPullingDown" />
-        <span v-else>准备刷新</span>
+        <svg v-else viewBox="25 25 50 50">
+          <linearGradient id="SVGID" gradientUnits="userSpaceOnUse">
+            <stop offset="0" style="stop-color:#fff" />
+            <stop offset="1" style="stop-color:#f05b54" />
+          </linearGradient>
+          <circle cx="50" cy="50" r="12" fill="none" />
+        </svg>
       </slot>
     </div>
   </div>
@@ -22,8 +33,11 @@ const DEFAULT_OPTIONS = {
   pullDownRefresh: false,
   pullUpLoad: false
 };
+const STOPTIME = 300;
 const PULLDOWNHEIGHT = 40;
+const PULLUPHEIGHT = 40;
 const EVENT_PULLING_DOWN = 'pullingDown';
+const EVENT_PULLING_UP = 'pullingUp';
 const EVENT_BEFORE_SCROLL_START = 'before-scroll-start';
 const EVENT_SCROLL = 'scroll';
 const EVENT_SCROLL_END = 'scroll-end';
@@ -55,7 +69,8 @@ export default {
   data() {
     return {
       pullDownY: -PULLDOWNHEIGHT,
-      isPullingDown: false
+      isPullingDown: false,
+      isPullingUp: false
     };
   },
   mounted() {
@@ -80,6 +95,9 @@ export default {
           pullDownRefresh: {
             threshold: PULLDOWNHEIGHT,
             stop: PULLDOWNHEIGHT
+          },
+          pullUpLoad: {
+            threshold: PULLUPHEIGHT
           }
         },
         this.options
@@ -87,6 +105,7 @@ export default {
       this.scroll = new yScroll(this.$refs.wrapper, options);
       this._listenScrollEvents();
       this._onPullDownRefresh();
+      this._onPullUpLoad();
     },
     //监听滚动事件
     _listenScrollEvents() {
@@ -99,30 +118,49 @@ export default {
     //初始化下拉刷新
     _onPullDownRefresh() {
       this.scroll.on(EVENT_PULLING_DOWN, () => {
+        //正在加载中
+        if (this.isPullingDown) {
+          return;
+        }
         this.setPullDownParms();
         this.$emit(EVENT_PULLING_DOWN);
       });
       this.scroll.on(EVENT_SCROLL, pos => {
-        //正在加载中
-        if (this.isPullingDown) return;
         this.pullDownY = pos.y - PULLDOWNHEIGHT;
+      });
+    },
+    //初始化上拉加载
+    _onPullUpLoad() {
+      this.scroll.on(EVENT_PULLING_UP, () => {
+        if (this.isPullingUp) {
+          return;
+        }
+        this.isPullingUp = true;
+        this.$emit(EVENT_PULLING_UP);
       });
     },
     //设置下拉刷新参数
     setPullDownParms(value = 0, status = true) {
-      this.$nextTick(() => {
-        this.pullDownY = value;
-        status
-          ? (this.isPullingDown = status)
-          : setTimeout(() => {
-              this.isPullingDown = status;
-            }, 300);
-      });
+      this.pullDownY = value;
+      this.isPullingDown = status;
     },
     //下拉刷新完成回调
     pullDownEnd() {
-      this.setPullDownParms(-PULLDOWNHEIGHT, false);
-      this.scroll.finishPullDown();
+      this.$nextTick(() => {
+        this.setPullDownParms(-PULLDOWNHEIGHT, false);
+        this.scroll.finishPullDown();
+      });
+    },
+    //下拉加载完成回调
+    pullUpEnd() {
+      this.$nextTick(() => {
+        this.scroll.finishPullUp();
+        this.isPullingUp = false;
+      });
+    },
+    beforeDestroy() {
+      this.scroll && this.scroll.destroy();
+      this.scroll = null;
     }
   }
 };
@@ -132,6 +170,14 @@ export default {
   position: relative;
   height: 100%;
   overflow: hidden;
+
+  .fs-pullup {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+  }
   .fs-pulldown {
     transition: all;
     position: absolute;
@@ -143,6 +189,15 @@ export default {
     font-size: 12px;
     color: #666;
     text-align: center;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+    circle {
+      stroke: url(#SVGID);
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
   }
 }
 </style>
