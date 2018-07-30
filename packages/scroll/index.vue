@@ -1,5 +1,5 @@
 <template>
-  <div ref="wrapper" class="fs-scroll-wrapper">
+  <div class="fs-scroll-wrapper" ref="wrapper">
     <div class="fs-scroll-content">
       <slot></slot>
       <div class="fs-pullup">
@@ -87,25 +87,30 @@ export default {
   },
   methods: {
     initScroll() {
+      const { pullDownRefresh, pullUpLoad } = this.options;
+      const obj = {};
+      pullDownRefresh &&
+        (obj.pullDownRefresh = {
+          threshold: PULLDOWNHEIGHT,
+          stop: PULLDOWNHEIGHT
+        });
+      pullUpLoad &&
+        (obj.pullUpLoad = {
+          threshold: PULLUPHEIGHT
+        });
       let options = Object.assign(
         {},
         DEFAULT_OPTIONS,
         {
-          probeType: this.scrollEvents.indexOf(EVENT_SCROLL) !== -1 ? 3 : 1,
-          pullDownRefresh: {
-            threshold: PULLDOWNHEIGHT,
-            stop: PULLDOWNHEIGHT
-          },
-          pullUpLoad: {
-            threshold: PULLUPHEIGHT
-          }
+          probeType: this.scrollEvents.indexOf(EVENT_SCROLL) !== -1 ? 3 : 1
         },
-        this.options
+        this.options,
+        obj
       );
       this.scroll = new yScroll(this.$refs.wrapper, options);
       this._listenScrollEvents();
-      this._onPullDownRefresh();
-      this._onPullUpLoad();
+      pullDownRefresh && this._onPullDownRefresh();
+      pullUpLoad && this._onPullUpLoad();
     },
     //监听滚动事件
     _listenScrollEvents() {
@@ -119,9 +124,7 @@ export default {
     _onPullDownRefresh() {
       this.scroll.on(EVENT_PULLING_DOWN, () => {
         //正在加载中
-        if (this.isPullingDown) {
-          return;
-        }
+        if (this.isPullingDown) return;
         this.setPullDownParms();
         this.$emit(EVENT_PULLING_DOWN);
       });
@@ -132,9 +135,7 @@ export default {
     //初始化上拉加载
     _onPullUpLoad() {
       this.scroll.on(EVENT_PULLING_UP, () => {
-        if (this.isPullingUp) {
-          return;
-        }
+        if (this.isPullingUp) return;
         this.isPullingUp = true;
         this.$emit(EVENT_PULLING_UP);
       });
@@ -148,14 +149,15 @@ export default {
     pullDownEnd() {
       this.$nextTick(() => {
         this.setPullDownParms(-PULLDOWNHEIGHT, false);
-        this.scroll.finishPullDown();
+        this.scroll && this.scroll.finishPullDown();
       });
     },
     //下拉加载完成回调
     pullUpEnd() {
       this.$nextTick(() => {
-        this.scroll.finishPullUp();
         this.isPullingUp = false;
+        this.scroll && this.scroll.finishPullUp();
+        this.scroll && this.scroll.refresh();
       });
     },
     beforeDestroy() {
