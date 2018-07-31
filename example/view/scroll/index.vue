@@ -2,7 +2,7 @@
   <div class="scroll-example">
     <scroll ref="scroll" :options="options" @pullingDown="onPullingDown" @pullingUp="onPullingUp">
       <ul>
-        <li v-for="(item,i) in list" :key="i">我是第{{item}}行</li>
+        <li v-for="(item,i) in list" :key="i" :class="{'active':i%2==0}">我是第{{item}}行</li>
       </ul>
     </scroll>
   </div>
@@ -20,7 +20,7 @@ export default {
         pullDownRefresh: true,
         pullUpLoad: true
       },
-      list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+      list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     };
   },
   methods: {
@@ -44,7 +44,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .scroll-example {
-  height: 400px;
+  height: 100%;
   li {
     width: 100%;
     height: 40px;
@@ -52,6 +52,9 @@ export default {
     font-size: 12px;
     color: #ccc;
     text-align: center;
+  }
+  .active {
+    background-color: #dcdcdc;
   }
 }
 </style>

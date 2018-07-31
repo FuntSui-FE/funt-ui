@@ -2,13 +2,18 @@
   "name": "fs-ui",
   "version": "1.0.0",
   "description": "A Mobile UI Components built on Vue",
-  "main": "index.js",
+  "main": "public/fs-ui.min.js",
   "repository": "https://github.com/webfansplz/fs-ui.git",
   "author": "webfansplz",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --config build/webpack.dev.conf.js"
+    "dev": "webpack-dev-server --config build/webpack.dev.conf.js",
+    "build": "node build/build.js"
   },
+  "keywords": [
+    "ui",
+    "vue"
+  ],
   "devDependencies": {
     "autoprefixer": "^9.0.1",
     "babel-cli": "^6.26.0",
@@ -17,12 +22,15 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
+    "chalk": "^2.4.1",
     "css-loader": "^1.0.0",
     "html-webpack-plugin": "^3.2.0",
     "less": "^3.7.1",
     "less-loader": "^4.1.0",
+    "ora": "^3.0.0",
     "postcss": "^7.0.1",
     "postcss-loader": "^2.1.6",
+    "rimraf": "^2.6.2",
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
     "vue": "^2.5.16",
@@ -32,7 +40,8 @@
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5"
+    "webpack-dev-server": "^3.1.5",
+    "webpack-merge": "^4.1.3"
   },
   "dependencies": {
     "better-scroll": "^1.12.5"

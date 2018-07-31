@@ -1,16 +1,18 @@
 'use strict';
 const path = require('path');
 const webpack = require('webpack');
+const baseConf = require('./webpack.base.conf');
+const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const config = require('./dev-config');
 function resolve(dir) {
   return path.join(__dirname, '..', dir);
 }
-module.exports = {
+module.exports = merge(baseConf, {
   mode: 'development',
   entry: {
-    'fs-mobile': resolve('./example/index.js')
+    'fs-ui': resolve('./example/index.js')
   },
   output: {
     path: resolve('./example/dist'),
@@ -34,74 +36,14 @@ module.exports = {
     },
     quiet: true
   },
-  resolve: {
-    extensions: ['.js', '.vue', '.json'],
-    alias: {
-      example: resolve('./example'),
-      packages: resolve('./packages')
-    }
-  },
-  module: {
-    rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          //loaders
-          loaders: {
-            css: ['vue-style-loader', 'css-loader'],
-            less: ['vue-style-loader', 'css-loader', 'postcss-loader', 'less-loader']
-          },
-          cssSourceMap: true
-        }
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: 'babel-loader'
-      },
-      {
-        test: /\.(css|postcss)$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader']
-      },
-      {
-        test: /\.(ttf|svg)$/,
-        loader: 'url-loader'
-      },
-      {
-        test: /\.less$/,
-        use: [
-          'vue-style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'less-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
-      }
-    ]
-  },
   plugins: [
     new VueLoaderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      chunks: ['fs-mobile'],
+      chunks: ['fs-ui'],
       template: 'example/index.html',
       filename: 'index.html',
       inject: true
     })
   ]
-};
+});
