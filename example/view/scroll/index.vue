@@ -1,18 +1,18 @@
 <template>
   <div class="scroll-example">
-    <scroll ref="scroll" :options="options" @pullingDown="onPullingDown" @pullingUp="onPullingUp">
+    <Scroll ref="scroll" :options="options" @pullingDown="onPullingDown" @pullingUp="onPullingUp">
       <ul>
         <li v-for="(item,i) in list" :key="i" :class="{'active':i%2==0}">我是第{{item}}行</li>
       </ul>
-    </scroll>
+    </Scroll>
   </div>
 </template>
 <script type="text/ecmascript-6">
-import scroll from 'packages/scroll';
+import Scroll from 'packages/scroll';
 export default {
   name: 'scroll-example',
   components: {
-    scroll
+    Scroll
   },
   data() {
     return {

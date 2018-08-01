@@ -9,7 +9,7 @@ function resolve(dir) {
 module.exports = merge(baseConf, {
   mode: 'production',
   entry: {
-    'fs-ui': resolve('./packages/index.js')
+    'funt-ui': resolve('./packages/index.js')
   },
   output: {
     filename: `${pkg.name}.min.js`,

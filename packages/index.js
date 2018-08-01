@@ -5,8 +5,8 @@ const components = [Loading, Scroll];
 
 const install = Vue => {
   components.forEach(component => {
-    // Vue.use(Component);
     Vue.component(component.name, component);
+    Vue.use(Component);
   });
 };
 
@@ -16,8 +16,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export { install, Loading, Scroll };
 
-const fsUi = {
-  install,
-  version: pkg.version
+const funtUi = {
+  version: pkg.version,
+  install
 };
-export default fsUi;
+export default funtUi;

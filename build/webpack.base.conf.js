@@ -23,7 +23,13 @@ module.exports = {
             css: ['vue-style-loader', 'css-loader'],
             less: ['vue-style-loader', 'css-loader', 'postcss-loader', 'less-loader']
           },
-          cssSourceMap: true
+          cssSourceMap: true,
+          transformToRequire: {
+            video: 'src',
+            source: 'src',
+            img: 'src',
+            image: 'xlink:href'
+          }
         }
       },
       {
@@ -62,6 +68,14 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 8192,
+          name: 'img/[name].[hash:8].[ext]'
+        }
       }
     ]
   },
