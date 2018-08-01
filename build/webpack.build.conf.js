@@ -13,7 +13,7 @@ module.exports = merge(baseConf, {
   },
   output: {
     filename: `${pkg.name}.min.js`,
-    path: resolve('public'),
+    path: resolve('lib'),
     library: `${pkg.name}`,
     libraryTarget: 'umd',
     umdNamedDefine: true,

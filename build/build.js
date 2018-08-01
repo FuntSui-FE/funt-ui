@@ -12,12 +12,11 @@ const webpack = require('webpack');
 //webpack production setting
 const config = require('./webpack.build.conf');
 //指定删除的文件
-const rmFile = path.resolve(__dirname, '../public');
+const rmFile = path.resolve(__dirname, '../lib/funt-ui.min.js');
 //build start loading
 const spinner = ora('building for production...');
 spinner.start();
 
-//构建全量压缩包！
 rm(rmFile, function(err) {
   if (err) throw err;
   webpack(config, function(err, stats) {

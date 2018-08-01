@@ -1,5 +1,5 @@
 <template>
-  <div class="loading" :style="style">
+  <div class="funt-loading" :style="style">
     <span :class="type">
       <i v-for="(item, index) in 12" :key="index" v-if="type=='spinner'" />
       <svg viewBox="25 25 50 50" v-if="type=='circular'">
@@ -33,6 +33,3 @@ export default basic({
   }
 });
 </script>
-<style lang="less">
-@import url('./index');
-</style>

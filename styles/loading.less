@@ -1,4 +1,4 @@
-.loading {
+.funt-loading {
   display: inline-block;
   width: 25px;
   height: 25px;
@@ -50,39 +50,11 @@
       }
     }
   }
-}
-.loop( @count ) when ( @count > 0 ) {
-  i:nth-of-type(@{count}) {
-    opacity: calc(1 - (0.75 / 12) * (@count - 1));
-    transform: rotate(calc(@count * 30deg));
-  }
-  .loop((@count - 1));
-}
-
-@keyframes fs-rotate {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@keyframes fs-circular {
-  0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-  }
-
-  50% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -40;
-  }
-
-  100% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -120;
+  .loop( @count ) when ( @count > 0 ) {
+    i:nth-of-type(@{count}) {
+      opacity: calc(1 - (0.75 / 12) * (@count - 1));
+      transform: rotate(calc(@count * 30deg));
+    }
+    .loop((@count - 1));
   }
 }

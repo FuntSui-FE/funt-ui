@@ -16,7 +16,7 @@ module.exports = merge(baseConf, {
     'funt-ui': resolve('./example/index.js')
   },
   output: {
-    path: resolve('./example/public'),
+    path: resolve('./example/lib'),
     publicPath: '/',
     filename: '[name].js',
     chunkFilename: '[name].js'

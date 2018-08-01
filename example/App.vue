@@ -11,7 +11,8 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style lang="less">
+@import url('../styles/index');
 #app {
   width: 100%;
   height: 100%;
