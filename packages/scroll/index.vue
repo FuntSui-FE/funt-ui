@@ -42,8 +42,9 @@ const EVENT_BEFORE_SCROLL_START = 'before-scroll-start';
 const EVENT_SCROLL = 'scroll';
 const EVENT_SCROLL_END = 'scroll-end';
 const SCROLL_EVENTS = [EVENT_SCROLL, EVENT_BEFORE_SCROLL_START, EVENT_SCROLL_END];
-export default {
-  name: 'funt-scroll',
+import basic from '../utils/create-basic';
+export default basic({
+  name: 'scroll',
   components: {
     Loading
   },
@@ -165,7 +166,7 @@ export default {
       this.scroll = null;
     }
   }
-};
+});
 </script>
 <style lang="less" scoped>
 @import url('./index');

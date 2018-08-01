@@ -9,8 +9,9 @@
   </div>
 </template>
 <script>
-export default {
-  name: 'funt-loading',
+import basic from '../utils/create-basic';
+export default basic({
+  name: 'loading',
   props: {
     type: {
       type: String,
@@ -30,7 +31,7 @@ export default {
       };
     }
   }
-};
+});
 </script>
 <style lang="less">
 @import url('./index');
