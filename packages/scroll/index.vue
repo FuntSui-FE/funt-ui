@@ -4,13 +4,13 @@
       <slot></slot>
       <div class="fs-pullup">
         <slot name="pullup" v-if="isPullingUp">
-          <loading type="spinner" />
+          <Loading type="spinner" />
         </slot>
       </div>
     </div>
     <div class="fs-pulldown" ref="pulldown" :style="pullDownStyle">
       <slot name="pulldown">
-        <loading v-if="isPullingDown" />
+        <Loading v-if="isPullingDown" />
         <svg v-else viewBox="25 25 50 50">
           <linearGradient id="SVGID" gradientUnits="userSpaceOnUse">
             <stop offset="0" style="stop-color:#fff" />
@@ -23,7 +23,7 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-import loading from '../loading';
+import Loading from '../loading';
 import yScroll from 'better-scroll';
 const DEFAULT_OPTIONS = {
   observeDOM: true,
@@ -43,9 +43,9 @@ const EVENT_SCROLL = 'scroll';
 const EVENT_SCROLL_END = 'scroll-end';
 const SCROLL_EVENTS = [EVENT_SCROLL, EVENT_BEFORE_SCROLL_START, EVENT_SCROLL_END];
 export default {
-  name: 'scroll',
+  name: 'funt-scroll',
   components: {
-    loading
+    Loading
   },
   props: {
     options: {
@@ -168,38 +168,5 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.fs-scroll-wrapper {
-  position: relative;
-  height: 100%;
-  overflow: hidden;
-
-  .fs-pullup {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 40px;
-  }
-  .fs-pulldown {
-    transition: all;
-    position: absolute;
-    left: 0;
-    top: -40px;
-    width: 100%;
-    height: 40px;
-    line-height: 40px;
-    font-size: 12px;
-    color: #666;
-    text-align: center;
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-    circle {
-      stroke: url(#SVGID);
-      stroke-width: 2;
-      stroke-linecap: round;
-    }
-  }
-}
+@import url('./index');
 </style>

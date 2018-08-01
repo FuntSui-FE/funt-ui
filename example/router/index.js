@@ -1,15 +1,17 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
-import scroll from '../view/scroll/index.vue';
+import menuList from '../data/menuList';
+import home from '../view/home/index.vue';
 const routes = [
+  ...menuList,
   {
-    path: '/',
-    redirect: '/scroll'
+    path: '/home',
+    component: home
   },
   {
-    path: '/scroll',
-    component: scroll
+    path: '/',
+    redirect: '/home'
   }
 ];
 const router = new VueRouter({
