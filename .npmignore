@@ -2,3 +2,5 @@
 *.md
 build/
 node_modules/
+styles/
+public/
