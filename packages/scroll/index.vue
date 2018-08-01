@@ -1,14 +1,14 @@
 <template>
-  <div class="fs-scroll-wrapper" ref="wrapper">
-    <div class="fs-scroll-content">
+  <div class="funt-scroll" ref="wrapper">
+    <div class="funt-scroll-content">
       <slot></slot>
-      <div class="fs-pullup">
+      <div class="funt-pullup">
         <slot name="pullup" v-if="isPullingUp">
           <Loading type="spinner" />
         </slot>
       </div>
     </div>
-    <div class="fs-pulldown" ref="pulldown" :style="pullDownStyle">
+    <div class="funt-pulldown" ref="pulldown" :style="pullDownStyle">
       <slot name="pulldown">
         <Loading v-if="isPullingDown" />
         <svg v-else viewBox="25 25 50 50">
@@ -168,6 +168,3 @@ export default basic({
   }
 });
 </script>
-<style lang="less" scoped>
-@import url('./index');
-</style>
