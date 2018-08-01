@@ -1,6 +1,6 @@
 {
   "name": "funt-ui",
-  "version": "1.0.0",
+  "version": "1.2.6",
   "description": "A Mobile UI Components built on Vue",
   "main": "public/funt-ui.min.js",
   "repository": "https://github.com/webfansplz/funt-ui.git",
