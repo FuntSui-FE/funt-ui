@@ -19,6 +19,7 @@ module.exports = merge(baseConf, {
     umdNamedDefine: true,
     globalObject: 'this'
   },
+  //不引入Vue的情况下能在各个环境都能解释执行
   externals: {
     vue: {
       root: 'Vue',

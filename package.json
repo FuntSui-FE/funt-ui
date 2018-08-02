@@ -10,7 +10,9 @@
     "dev": "webpack-dev-server --config build/webpack.dev.conf.js",
     "build:style": "gulp --gulpfile build/build-style.js",
     "build:package": "node build/build.js",
-    "build": "npm run build:package&&npm run build:style"
+    "build": "npm run build:package&&npm run build:style",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "keywords": [
     "ui",
@@ -48,6 +50,7 @@
     "vue-router": "^3.0.1",
     "vue-style-loader": "^4.1.1",
     "vue-template-compiler": "^2.5.16",
+    "vuepress": "^0.13.1",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5",

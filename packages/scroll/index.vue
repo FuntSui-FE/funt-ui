@@ -16,7 +16,7 @@
             <stop offset="0" style="stop-color:#fff" />
             <stop offset="1" style="stop-color:#f05b54" />
           </linearGradient>
-          <circle cx="50" cy="50" r="12" fill="none" />
+          <circle cx="50" cy="50" r="12" fill="none" class="init-circle" />
         </svg>
       </slot>
     </div>
@@ -33,7 +33,6 @@ const DEFAULT_OPTIONS = {
   pullDownRefresh: false,
   pullUpLoad: false
 };
-const STOPTIME = 300;
 const PULLDOWNHEIGHT = 40;
 const PULLUPHEIGHT = 40;
 const EVENT_PULLING_DOWN = 'pullingDown';
