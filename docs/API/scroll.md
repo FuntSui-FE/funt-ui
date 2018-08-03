@@ -62,24 +62,24 @@ export default {
 
 **API**
 
-| 参数         | 说明                                                  | 类型   | 默认值 |
-| :----------- | :---------------------------------------------------- | :----- | :----: |
-| options      | 参数配置,详见以下 options                             | Object | 见下表 |
-| scrollEvents | 事件类型,可选值 scroll,before-scroll-start,scroll-end | Array  |  [ ]   |
+| 参数         | 说明                                               | 类型   |  默认值  |
+| :----------- | :------------------------------------------------- | :----- | :------: |
+| options      | 参数配置,详见以下 options                          | Object | 详见下表 |
+| scrollEvents | 事件类型,可选值 scroll,beforeScrollStart,scrollEnd | Array  |   [ ]    |
 
 **Options**
 
 | 参数            | 说明             |  类型   | 默认值 |
 | :-------------- | :--------------- | :-----: | :----: |
-| pullDownRefresh | 是否开启下拉加载 | Boolean | false  |
+| pullDownRefresh | 是否开启下拉刷新 | Boolean | false  |
 | pullUpLoad      | 是否开启上拉加载 | Boolean | false  |
 
 **Event**
 
-| 参数                | 说明                                        | 类型  | 默认值 |
-| :------------------ | :------------------------------------------ | :---- | :----: |
-| scroll              | 滚动事件:与 scrollEvents 参数搭配使用       | Event |   -    |
-| before-scroll-start | 滚动开始前事件:与 scrollEvents 参数搭配使用 | Event |   -    |
-| scroll-end          | 滚动结束事件:与 scrollEvents 参数搭配使用   | Event |   -    |
-| pullingDown         | 下拉加载回调事件                            | Event |   -    |
-| pullingUp           | 上拉加载回调事件                            | Event |   -    |
+| 参数              | 说明                                                 | 类型  | 默认值 |
+| :---------------- | :--------------------------------------------------- | :---- | :----: |
+| beforeScrollStart | 滚动开始前事件:与 scrollEvents 参数搭配使用,参数:无  | Event |   -    |
+| scroll            | 滚动事件:与 scrollEvents 参数搭配使用,参数:{x,y}     | Event |   -    |
+| scrollEnd         | 滚动结束事件:与 scrollEvents 参数搭配使用,参数:{x,y} | Event |   -    |
+| pullingDown       | 下拉刷新回调事件,参数:无                             | Event |   -    |
+| pullingUp         | 上拉加载回调事件,参数:无                             | Event |   -    |

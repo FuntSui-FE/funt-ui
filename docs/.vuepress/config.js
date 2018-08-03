@@ -1,4 +1,5 @@
 module.exports = {
+  dest: 'docs/dist',
   port: 1111,
   serviceWorker: true,
   locales: {
