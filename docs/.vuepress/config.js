@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/funt-ui',
+  base: '/funt-ui/',
   dest: 'docs/dist',
   port: 1111,
   serviceWorker: true,
