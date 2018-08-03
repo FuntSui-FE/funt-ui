@@ -15,6 +15,7 @@
 <script>
 const LOGO = require('../../../build/funt-ui.png');
 import MENULIST from '../../data/menuList';
+// git subtree push --prefix docs/dist origin gh-pages
 export default {
   name: 'home',
   data() {
