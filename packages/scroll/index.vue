@@ -2,13 +2,13 @@
   <div class="funt-scroll" ref="wrapper">
     <div class="funt-scroll-content">
       <slot></slot>
-      <div class="funt-pullup">
+      <div class="funt-pullup" v-if="options.pullUpLoad">
         <slot name="pullup" v-if="isPullingUp">
           <Loading type="spinner" />
         </slot>
       </div>
     </div>
-    <div class="funt-pulldown" ref="pulldown" :style="pullDownStyle">
+    <div class="funt-pulldown" ref="pulldown" :style="pullDownStyle" v-if="options.pullDownRefresh">
       <slot name="pulldown">
         <Loading v-if="isPullingDown" />
         <svg v-else viewBox="25 25 50 50">
@@ -16,7 +16,7 @@
             <stop offset="0" style="stop-color:#fff" />
             <stop offset="1" style="stop-color:#f05b54" />
           </linearGradient>
-          <circle cx="50" cy="50" r="12" fill="none" />
+          <circle cx="50" cy="50" r="12" fill="none" class="init-circle" />
         </svg>
       </slot>
     </div>
@@ -33,14 +33,13 @@ const DEFAULT_OPTIONS = {
   pullDownRefresh: false,
   pullUpLoad: false
 };
-const STOPTIME = 300;
 const PULLDOWNHEIGHT = 40;
 const PULLUPHEIGHT = 40;
 const EVENT_PULLING_DOWN = 'pullingDown';
 const EVENT_PULLING_UP = 'pullingUp';
-const EVENT_BEFORE_SCROLL_START = 'before-scroll-start';
+const EVENT_BEFORE_SCROLL_START = 'beforeScrollStart';
 const EVENT_SCROLL = 'scroll';
-const EVENT_SCROLL_END = 'scroll-end';
+const EVENT_SCROLL_END = 'scrollEnd';
 const SCROLL_EVENTS = [EVENT_SCROLL, EVENT_BEFORE_SCROLL_START, EVENT_SCROLL_END];
 import basic from '../utils/create-basic';
 export default basic({
@@ -105,7 +104,7 @@ export default basic({
         {
           probeType: this.scrollEvents.indexOf(EVENT_SCROLL) !== -1 ? 3 : 1
         },
-        this.options,
+        // this.options,
         obj
       );
       this.scroll = new yScroll(this.$refs.wrapper, options);

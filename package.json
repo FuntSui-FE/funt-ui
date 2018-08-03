@@ -1,8 +1,9 @@
 {
   "name": "funt-ui",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "A Mobile UI Components built on Vue",
   "main": "lib/funt-ui.min.js",
+  "homepage": "http://webfansplz.github.io/funt-ui",
   "repository": "https://github.com/webfansplz/funt-ui.git",
   "author": "webfansplz",
   "license": "MIT",
@@ -10,7 +11,9 @@
     "dev": "webpack-dev-server --config build/webpack.dev.conf.js",
     "build:style": "gulp --gulpfile build/build-style.js",
     "build:package": "node build/build.js",
-    "build": "npm run build:package&&npm run build:style"
+    "build": "npm run build:package&&npm run build:style",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "keywords": [
     "ui",
@@ -28,6 +31,7 @@
     "css-loader": "^1.0.0",
     "file-loader": "^1.1.11",
     "friendly-errors-webpack-plugin": "^1.7.0",
+    "gh-pages": "^1.2.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-clean-css": "^3.9.4",
@@ -47,7 +51,8 @@
     "vue-loader": "^15.2.6",
     "vue-router": "^3.0.1",
     "vue-style-loader": "^4.1.1",
-    "vue-template-compiler": "^2.5.16",
+    "vue-template-compiler": "^2.5.17",
+    "vuepress": "^0.13.1",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5",
