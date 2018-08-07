@@ -1,6 +1,6 @@
 {
   "name": "funt-ui",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "A Mobile UI Components built on Vue",
   "main": "lib/funt-ui.min.js",
   "homepage": "http://webfansplz.github.io/funt-ui",
