@@ -1,4 +1,5 @@
 module.exports = {
+  base: '/funt-ui/',
   dest: 'docs/dist',
   port: 1111,
   serviceWorker: true,
@@ -9,7 +10,16 @@ module.exports = {
       description: 'A Mobile UI Components built on Vue'
     }
   },
-  head: [['link', { rel: 'icon', href: '/funt-ui.png' }], ['meta', { name: 'theme-color', content: '#3eaf7c' }]],
+  head: [
+    ['link', {
+      rel: 'icon',
+      href: '/funt-ui.png'
+    }],
+    ['meta', {
+      name: 'theme-color',
+      content: '#3eaf7c'
+    }]
+  ],
   themeConfig: {
     repo: 'FuntSui-FE/funt-ui',
     editLinks: true,
@@ -35,8 +45,7 @@ module.exports = {
       }
     },
     sidebar: {
-      '/API/': [
-        {
+      '/API/': [{
           title: '开发指南',
           collapsable: false,
           children: ['install', 'start']
