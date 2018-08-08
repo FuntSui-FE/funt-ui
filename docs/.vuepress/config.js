@@ -11,14 +11,20 @@ module.exports = {
     }
   },
   head: [
-    ['link', {
-      rel: 'icon',
-      href: '/funt-ui.png'
-    }],
-    ['meta', {
-      name: 'theme-color',
-      content: '#3eaf7c'
-    }]
+    [
+      'link',
+      {
+        rel: 'icon',
+        href: '/funt-ui.png'
+      }
+    ],
+    [
+      'meta',
+      {
+        name: 'theme-color',
+        content: '#3eaf7c'
+      }
+    ]
   ],
   themeConfig: {
     repo: 'FuntSui-FE/funt-ui',
@@ -45,7 +51,8 @@ module.exports = {
       }
     },
     sidebar: {
-      '/API/': [{
+      '/API/': [
+        {
           title: '开发指南',
           collapsable: false,
           children: ['install', 'start']
@@ -53,7 +60,7 @@ module.exports = {
         {
           title: '组件',
           collapsable: false,
-          children: ['loading', 'scroll']
+          children: ['loading', 'scroll', 'lmarquee', 'marquee']
         }
       ]
     }

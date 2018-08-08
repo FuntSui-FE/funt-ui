@@ -26,7 +26,7 @@ Vue.use(Scroll);
 </template>
 ```
 
-```html
+```js
 <script>
 export default {
   name: 'scroll',
