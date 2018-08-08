@@ -8,6 +8,7 @@
   </div>
 </template>
 <script>
+import basic from '../utils/create-basic';
 const AnimationFn = (function() {
   return (
     window.requestAnimationFrame ||
@@ -18,15 +19,14 @@ const AnimationFn = (function() {
     }
   );
 })();
-export default {
+const a = window;
+export default basic({
   name: 'marquee',
   props: {
-    //动画速度 fast or slow
     speed: {
       type: String,
       default: 'fast'
     },
-    //跑马灯类型 stair or line
     type: {
       type: String,
       default: 'stair'
@@ -83,5 +83,5 @@ export default {
       }
     }
   }
-};
+});
 </script>
