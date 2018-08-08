@@ -8,8 +8,8 @@
     <img src="https://img.shields.io/npm/v/funt-ui.svg?style=flat" alt="npm version" />
     <!-- <img src="https://travis-ci.org/FuntSui-FE/funt-ui.svg?branch=master" alt="Build Status" /> -->
     <img src="https://img.shields.io/npm/dt/funt-ui.svg" alt="downloads" />
-    <img src="http://img.badgesize.io/https://unpkg.com/funt-ui/lib/funt-ui.min.js" alt="JS  Size" />
-    <img src="http://img.badgesize.io/https://unpkg.com/funt-ui/lib/styles/funt-ui.css" alt="CSS  Size" />
+    <img src="http://img.badgesize.io/https://unpkg.com/funt-ui/lib/funt-ui.min.js?label=JS%20size" alt="JS  Size" />
+    <img src="http://img.badgesize.io/https://unpkg.com/funt-ui/lib/styles/funt-ui.css?label=CSS%20size" alt="CSS  Size" />
     <!-- <img src="http://img.badgesize.io/https://unpkg.com/funt-ui/lib/funt-ui.min.js?compression=gzip&style=flat-square&label=JS%20gzip%20size" alt="JS Gzip Size" />
     <img src="http://img.badgesize.io/https://unpkg.com/funt-ui/lib/styles/funt-ui.css?compression=gzip&style=flat-square&label=CSS%20gzip%20size" alt="CSS Gzip Size" /> -->
 </p>
