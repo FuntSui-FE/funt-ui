@@ -2,12 +2,12 @@
 
 **NPM**
 
-```js
+```shell
 $ npm install funt-ui -S
 ```
 
 **YARN**
 
-```js
+```shell
 $ yarn add funt-ui -S
 ```
