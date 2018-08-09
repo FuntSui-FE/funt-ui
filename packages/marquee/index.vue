@@ -19,7 +19,7 @@ const AnimationFn = (function() {
     }
   );
 })();
-const a = window;
+
 export default basic({
   name: 'marquee',
   props: {
