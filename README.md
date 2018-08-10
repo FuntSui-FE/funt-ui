@@ -1,6 +1,6 @@
 <p align="center">
     <img alt="logo" src="https://github.com/FuntSui-FE/funt-ui/blob/master/build/funt-ui.png" width="120" style="margin-bottom: 10px;">
-</p>  
+</p>
 
 <h1 align="center" style="margin: 30px 0 35px;">Funt-ui</h1>
 <h3 align="center" style="margin: 30px 0 35px;">A Mobile UI Components built on Vue</h3>
@@ -50,3 +50,29 @@ import 'funt-ui/lib/styles/funt-ui.css';
 Vue.use(Loading);
 Vue.use(Scroll);
 ```
+
+## TODO LIST
+
+- [x] loading -csh
+
+- [x] 走马灯(横向，纵向) -csh
+
+- [x] scroll 拖动容器 -csh
+
+- [ ] 表单验证(指令)(组件？)
+
+- [ ] 图片懒加载/预加载(指令)
+
+- [ ] 表格组件
+
+- [ ] range 拖拽控件
+
+- [ ] clickOutSide
+
+- [ ] Popover
+
+- [ ] Drawer
+
+- [ ] modal
+
+- [ ] 数字键盘 [link](https://mobile.ant.design/kitchen-sink/components/input-item?lang=zh-CN#input-item-demo-2)
