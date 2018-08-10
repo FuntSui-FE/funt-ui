@@ -59,20 +59,18 @@ Vue.use(Scroll);
 
 - [x] scroll 拖动容器 -csh
 
-- [ ] 表单验证(指令)(组件？)
+- [ ] 表单验证(指令)(组件？) -hjy
 
-- [ ] 图片懒加载/预加载(指令)
+- [ ] 图片懒加载/预加载(指令) -yn
 
-- [ ] 表格组件
+// - [ ] 表格组件 -hyq
 
-- [ ] range 拖拽控件
+- [ ] clickOutSide -tl
 
-- [ ] clickOutSide
+- [ ] Popover -
 
-- [ ] Popover
+- [ ] Drawer -tl
 
-- [ ] Drawer
+- [ ] modal -dp
 
-- [ ] modal
-
-- [ ] 数字键盘 [link](https://mobile.ant.design/kitchen-sink/components/input-item?lang=zh-CN#input-item-demo-2)
+- [ ] 数字键盘 [link](https://mobile.ant.design/kitchen-sink/components/input-item?lang=zh-CN#input-item-demo-2) -hsy
