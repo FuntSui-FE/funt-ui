@@ -19,4 +19,5 @@ const funtUi = {
   version,
   install
 };
+
 export default funtUi;
