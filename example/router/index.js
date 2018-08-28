@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 import menuList from '../data/menuList';
 import home from '../view/home/index.vue';
+
 const routes = [
   ...menuList,
   {

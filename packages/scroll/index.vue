@@ -78,6 +78,10 @@ export default basic({
       this.initScroll();
     });
   },
+  beforeDestroy() {
+    this.scroll && this.scroll.destroy();
+    this.scroll = null;
+  },
   computed: {
     pullDownStyle() {
       return {
@@ -159,10 +163,6 @@ export default basic({
         this.scroll && this.scroll.finishPullUp();
         this.scroll && this.scroll.refresh();
       });
-    },
-    beforeDestroy() {
-      this.scroll && this.scroll.destroy();
-      this.scroll = null;
     }
   }
 });
