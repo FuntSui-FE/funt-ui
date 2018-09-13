@@ -1,5 +1,5 @@
 ---
-layout: numkeyboard-demo
+layout: numkeyboardDemo
 ---
 <!-- <numkeyboard-demo/> -->
 
