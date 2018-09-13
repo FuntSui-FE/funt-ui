@@ -101,7 +101,7 @@ export default basic({
     // 小数点和删除 class
     computClass(item) {
       if (item == '.') {
-        if (!this.options.decimal || this.options.type == 'phone' || this.options.type == 'bankCard') {
+        if (this.options.decimal == false || this.options.type == 'phone' || this.options.type == 'bankCard') {
           return 'keyboard-decimal funt-number-keyboard-item-disabled';
         }
         return 'keyboard-decimal';

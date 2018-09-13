@@ -22,6 +22,7 @@ export default {
   data() {
     return {
       keyboardopt: {},
+      curtKeypadIndex: 0,
       forms: [
         {
           type: 'phone',

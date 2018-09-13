@@ -9,7 +9,8 @@ Vue.use(Numkeyboard, Customkeyboard);
 ```
 
 
-**效果演示**
+**效果演示**  
+
 <section class="code-box-demo code-box-demo-preview"><iframe id="demoFrame" name="demoFrame" title="antd-mobile" src="/funt-ui/API/numkeyboard-demo.html" style="width: 377px; height: 567px; border:1px solid rgb(247, 247, 247);"></iframe></section>
 
 

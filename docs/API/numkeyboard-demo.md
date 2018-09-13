@@ -1,7 +1,9 @@
 ---
-layout: numkeyboardDemo
+sidebar: false
 ---
-<!-- <numkeyboard-demo/> -->
+<ClientOnly>
+  <numkeyboard-demo/>
+</ClientOnly>
 
 
 
