@@ -60,7 +60,13 @@ module.exports = {
         {
           title: '组件',
           collapsable: false,
-          children: ['loading', 'scroll', 'lmarquee', 'marquee']
+          children: ['loading', 'scroll', 'lmarquee', 'marquee', 'numkeyboard']
+        },
+        {
+          title: 'MobileEnv',
+          sidebar: false,
+          collapsable: true,
+          children: ['numkeyboard-demo']
         }
       ]
     }
