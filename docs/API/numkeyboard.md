@@ -3,9 +3,9 @@
 **使用指南**
 
 ```js
-import { Numkeyboard } from 'funt-ui';
+import { Numkeyboard, Customkeyboard} from 'funt-ui';
 
-Vue.use(Numkeyboard);
+Vue.use(Numkeyboard, Customkeyboard);
 ```
 
 
