@@ -263,13 +263,17 @@ export default basic({
     _handleNumberKey(num) {
       let S = this.money;
       this.money = S + num;
-      //没有小数点
-      if (!(S.indexOf('.') > -1)) {
-        //如果第一位是0，只能输入小数点
-        if (num == 0 && S.length == 0) this.money = '0.';
-        else {
-          if (S.length && Number(S.charAt(0)) === 0) return;
-          this.money = S + num;
+      if (this.decimal) {
+        this.money = S + num;
+      } else {
+        //没有小数点
+        if (!(S.indexOf('.') > -1)) {
+          //如果第一位是0，只能输入小数点
+          if (num == 0 && S.length == 0) this.money = '0.';
+          else {
+            if (S.length && Number(S.charAt(0)) === 0) return;
+            this.money = S + num;
+          }
         }
       }
       this.updatevalue();

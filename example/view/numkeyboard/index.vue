@@ -12,9 +12,6 @@
     <div class="default-input">
       <input class="date_number" type="tel" placeholder="请输入数字" />
     </div>
-    <div>
-      <button @click="Formdata">当前数据</button>
-    </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -34,12 +31,6 @@ export default {
   },
   mounted() {},
   methods: {
-    // 当前数据
-    Formdata() {
-      console.log(this.phone);
-      console.log(this.bankCard);
-      console.log(this.declnum);
-    },
     change(v) {
       this.phone = v;
       console.log('change： ' + v);

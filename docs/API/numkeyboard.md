@@ -3,7 +3,7 @@
 **使用指南**
 
 ```js
-import { Numkeyboard} from 'funt-ui';
+import { Numkeyboard } from 'funt-ui';
 
 Vue.use(Numkeyboard);
 ```
