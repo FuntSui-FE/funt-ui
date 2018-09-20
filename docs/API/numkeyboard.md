@@ -19,10 +19,10 @@ Vue.use(Numkeyboard);
 <template>
 <div>
   <div class="numkeyboard-example">
-    <funt-numkeyboard :value="phone" type="phone" label="手机号码：" placeholder="phone format"  @onChange="change" @onBlur="blur" @onFocus="focus"></funt-numkeyboard>
-    <funt-numkeyboard v-model="value1" type="phone" label="手机号码：" placeholder="phone format"></funt-numkeyboard>
-    <funt-numkeyboard v-model="value2" type="bankCard" label="银行卡号：" placeholder="bankCard format" textalign="right"></funt-numkeyboard>
-    <funt-numkeyboard v-model="value3" label="小数点：" placeholder="percent format" textalign="center"></funt-numkeyboard>
+    <numkeyboard :value="phonevalue" type="phone" label="手机号码：" placeholder="phone format" @onChange="change" @onBlur="blur" @onFocus="focus"></numkeyboard>
+    <numkeyboard v-model="bankCard" type="bankCard" label="银行卡号：" placeholder="bankCard format" textalign="right"></numkeyboard>
+    <numkeyboard v-model="percet" label="小数点：" :decimal="false" placeholder="percent format" textalign="center"></numkeyboard>
+    <numkeyboard v-model="normal" label="数字：" placeholder="number" textalign="center"></numkeyboard>
   </div>
 </div>
 </template>
@@ -33,10 +33,10 @@ Vue.use(Numkeyboard);
 export default {
   data() {
     return {
-      phone:'',
-      value1: '186', 
-      value2: '', 
-      value3: '', 
+      phonevalue:'',
+      bankCard: '186', 
+      percet: '', 
+      normal: '', 
     }
   },
   methods: {

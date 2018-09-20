@@ -1,10 +1,10 @@
 <template>
   <div class="numkeypad-example">
     <h4>数字键盘</h4>
-    <numkeyboard :value="phone" type="phone" label="手机号码：" placeholder="phone format" @onChange="change" @onBlur="blur" @onFocus="focus"></numkeyboard>
+    <numkeyboard class="dddd-phone" :value="phone" type="phone" label="手机号码：" placeholder="phone format" @onChange="change" @onBlur="blur" @onFocus="focus"></numkeyboard>
     <numkeyboard v-model="bankCard" type="bankCard" label="银行卡号：" placeholder="bankCard format" textalign="right"></numkeyboard>
     <numkeyboard v-model="percet" label="小数点：" :decimal="false" placeholder="percent format" textalign="center"></numkeyboard>
-    <numkeyboard v-model="normal" label="数字：" placeholder="percent format" textalign="center"></numkeyboard>
+    <numkeyboard v-model="normal" label="数字：" placeholder="number" textalign="center"></numkeyboard>
   </div>
 </template>
 <script type="text/ecmascript-6">
