@@ -1,6 +1,6 @@
 <template>
-  <div id="funt-number-keyboard-container" :class="outsideclass">
-    <div class="funt-number-keyboard-wrapper" :class="{'funt-number-keyboard-wrapper-hide': !options.flag}">
+  <div id="funt-number-keyboard-container" :class="outsideclass" v-if="showkey">
+    <div class="funt-number-keyboard-wrapper" :class="{'funt-number-keyboard-wrapper-hide': !flag}">
       <ul v-if="isMobile()" class="funt-number-keyboard-ul-wrapper mobile-keyboard">
         <li v-for="(item, index) in keyboardLi" :key="index" @touchstart="keyStart($event,computText(item,true))" @touchend="keyEnd($event,computText(item,true))" class="funt-number-keyboard-item" :class="computClass(item)">{{computText(item,false)}}</li>
       </ul>
@@ -27,33 +27,37 @@ const onkeyboard = (function() {
     };
   }
 })();
+const offkeyboard = (function() {
+  if (document.removeEventListener) {
+    return function(element, event, handler) {
+      if (element && event) {
+        element.removeEventListener(event, handler, false);
+      }
+    };
+  } else {
+    return function(element, event, handler) {
+      if (element && event) {
+        element.detachEvent('on' + event, handler);
+      }
+    };
+  }
+})();
 export default basic({
   name: 'customekeyboard',
   props: {
-    options: {
-      type: Object,
-      default: {
-        type: '',
-        value: {
-          type: String,
-          default: '',
-          require: true
-        },
-        label: '数字键盘：',
-        placeholder: 'number format',
-        textalign: 'left',
-        flag: false,
-        decimal: {
-          type: Boolean,
-          default: false
-        }
-      }
+    showkey: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
+      value: '',
+      flag: false,
+      decimal: true,
+      type: '',
       money: '',
-      outsideclass: 'funt-keyboard-exactAreaClassName',
+      outsideclass: 'funt-keyboard-exactAreaClassName-outside',
       vueTouch: {
         move: true,
         leave: true,
@@ -64,23 +68,39 @@ export default basic({
     };
   },
   mounted() {
-    this.outClick();
+    this.onMounted();
   },
-  computed: {
-    disable() {
-      return this.options.decimal || this.options.type == 'phone' || this.options.type == 'bankCard';
-    }
+  beforeDestroy() {
+    this.onbeforeDestroy();
   },
   methods: {
-    // clickoutside
-    outClick() {
-      let eventType = this.isMobile() ? 'touchend' : 'click';
-      onkeyboard(document, eventType, e => {
-        if (!this.ifInExact(document.getElementsByClassName(this.outsideclass), e.target)) {
-          this.fakeOut();
-        }
-      });
+    // 关闭键盘
+    fakeOut() {
+      this.$emit('hidekeyboard', false);
     },
+    // 更新值
+    updatevalue() {
+      this.typeComputed(this.type);
+      this.$emit(`updatevalue${this.CustomKeyBoardId}`, String(this.money));
+    },
+    // mounted init
+    onMounted() {
+      let eventType = this.isMobile() ? 'touchstart' : 'click';
+      onkeyboard(document, eventType, this.docClick);
+      onkeyboard(document, eventType, this.docClick);
+    },
+    // beforeDestroy init
+    onbeforeDestroy() {
+      let eventType = this.isMobile() ? 'touchstart' : 'click';
+      offkeyboard(document, eventType, this.docClick);
+    },
+    // document handler
+    docClick(e) {
+      if (!this.ifInExact(document.getElementsByClassName(this.outsideclass), e.target)) {
+        this.fakeOut();
+      }
+    },
+    // mobile
     isMobile() {
       if (window.location.pathname.indexOf('funt-ui') > -1) {
         return false;
@@ -101,7 +121,7 @@ export default basic({
     // 小数点和删除 class
     computClass(item) {
       if (item == '.') {
-        if (this.options.decimal == false || this.options.type == 'phone' || this.options.type == 'bankCard') {
+        if (this.decimal || this.type == 'phone' || this.type == 'bankCard') {
           return 'keyboard-decimal funt-number-keyboard-item-disabled';
         }
         return 'keyboard-decimal';
@@ -114,7 +134,7 @@ export default basic({
     // 显示键盘值
     computText(item, keyFlag) {
       if (item == '.') {
-        if (this.options.decimal || this.options.type == 'phone' || this.options.type == 'bankCard') {
+        if (this.decimal || this.type == 'phone' || this.type == 'bankCard') {
           return '';
         }
       } else if (item == 'delete') {
@@ -124,15 +144,6 @@ export default basic({
         return '';
       }
       return item;
-    },
-    // 关闭键盘
-    fakeOut() {
-      this.$emit('hidekeyboard', false);
-    },
-    // 更新值
-    updateValue() {
-      this.typeComputed(this.options.type);
-      this.$emit('update', String(this.money));
     },
     // 类型处理
     typeComputed(type) {
@@ -164,9 +175,8 @@ export default basic({
     // 键盘逻辑
     // 键盘事件start
     keyStart(e, keyNum) {
-      e.preventDefault();
       document.activeElement.blur();
-      this.money = this.options.value;
+      this.money = this.value;
       this.vueTouch.move = true;
       this.vueTouch.leave = true;
       this.vueTouch.longTouch = true;
@@ -188,8 +198,7 @@ export default basic({
     },
     // 键盘事件end
     keyEnd(e, keyNum) {
-      e.preventDefault();
-      this.money = this.options.value;
+      this.money = this.value;
       clearTimeout(this.time);
       clearInterval(this.pressTimes);
       if (this.vueTouch.longTouch && this.vueTouch.move) {
@@ -200,7 +209,6 @@ export default basic({
     },
     // 长按事件
     longPress(e, keyNum) {
-      e.preventDefault();
       if (keyNum == 'delete') {
         this.pressTimes = setInterval(() => {
           this._handleDeleteKey();
@@ -238,7 +246,7 @@ export default basic({
         //如果不是，添加一个小数点
         this.money = this.money + '.';
       }
-      this.updateValue();
+      this.updatevalue();
     },
     //处理删除键
     _handleDeleteKey() {
@@ -249,7 +257,7 @@ export default basic({
       }
       //否则删除最后一个
       this.money = S.substring(0, S.length - 1);
-      this.updateValue();
+      this.updatevalue();
     },
     //处理数字
     _handleNumberKey(num) {
@@ -264,7 +272,7 @@ export default basic({
           this.money = S + num;
         }
       }
-      this.updateValue();
+      this.updatevalue();
     }
   }
 });

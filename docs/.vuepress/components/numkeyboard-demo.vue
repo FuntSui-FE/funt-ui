@@ -1,93 +1,42 @@
 <template>
   <div class="numkeypad-example">
-    <h4>数字键盘组件</h4>
-    <numkeyboard :options="forms[0]" @click.native="showkeyboard(0)">
-    </numkeyboard>
-    <numkeyboard :options="forms[1]" @click.native="showkeyboard(1)">
-    </numkeyboard>
-    <numkeyboard :options="forms[2]" @click.native="showkeyboard(2)">
-    </numkeyboard>
-    <customkeyboard :options="keyboardopt" @update="updateValue" @hidekeyboard='hidekeyboard'></customkeyboard>
+    <h4>数字键盘</h4>
+    <numkeyboard :value="phone" type="phone" label="手机号码：" placeholder="phone format" @onChange="change" @onBlur="blur" @onFocus="focus"></numkeyboard>
+    <numkeyboard v-model="bankCard" type="bankCard" label="银行卡号：" placeholder="bankCard format" textalign="right"></numkeyboard>
+    <numkeyboard v-model="percet" label="小数点：" :decimal="false" placeholder="percent format" textalign="center"></numkeyboard>
+    <numkeyboard v-model="normal" label="数字：" placeholder="percent format" textalign="center"></numkeyboard>
   </div>
 </template>
 <script type="text/ecmascript-6">
-import numkeyboard from '../../../packages/numkeyboard/index';
-import customkeyboard from '../../../packages/customkeyboard/index';
+import numkeyboard from '../../../packages/numkeyboard';
 export default {
   name: 'numkeypad-example',
   components: {
-    numkeyboard,
-    customkeyboard
+    numkeyboard
   },
   data() {
     return {
-      keyboardopt: {},
-      curtKeypadIndex: 0,
-      forms: [
-        {
-          type: 'phone',
-          value: '',
-          outsideclass: 'funt-keyboard-exactAreaClassName',
-          label: '手机号码：',
-          placeholder: 'phone format',
-          textalign: 'left',
-          flag: false
-        },
-        {
-          type: 'bankCard',
-          value: '',
-          outsideclass: 'funt-keyboard-exactAreaClassName',
-          label: '银行卡号：',
-          placeholder: 'bankCard format',
-          textalign: 'right',
-          flag: false
-        },
-        {
-          type: 'percent',
-          value: '',
-          outsideclass: 'funt-keyboard-exactAreaClassName',
-          label: '小数点：',
-          placeholder: 'percent format',
-          textalign: 'center',
-          flag: false
-        }
-      ]
+      phone: '168',
+      bankCard: '',
+      percet: '',
+      normal: ''
     };
   },
-  mounted() {},
   methods: {
-    // 隐藏键盘
-    hidekeyboard() {
-      this.forms.forEach((item, index, arr) => {
-        this.forms[index].flag = false;
-      });
-      this.keyboardopt = this.forms[0];
+    change(v) {
+      this.phone = v;
+      // console.log('change： ' + v);
     },
-    // 更新对应值
-    updateValue(v) {
-      this.forms.forEach((item, index, arr) => {
-        if (this.curtKeypadIndex == index) {
-          this.forms[index].value = v;
-          this.keyboardopt.value = v;
-        }
-      });
+    blur() {
+      // console.log('blur');
     },
-    // 打开键盘
-    showkeyboard(i) {
-      document.activeElement.blur();
-      this.curtKeypadIndex = i;
-      this.forms.forEach((item, index, arr) => {
-        if (i == index) {
-          this.forms[index].flag = true;
-        } else {
-          this.forms[index].flag = false;
-        }
-      });
-      this.keyboardopt = this.forms[i];
+    focus() {
+      // console.log('focus');
     }
   }
 };
 </script>
+
 <style lang="less">
 @import url('../../../styles/index');
 h4 {
@@ -101,6 +50,7 @@ h4 {
   input {
     width: 100%;
     height: 30px;
+    font-size: 14px;
     line-height: 20px;
     text-align: center;
   }
