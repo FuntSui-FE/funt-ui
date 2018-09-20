@@ -33,6 +33,7 @@ Vue.use(Numkeyboard);
 export default {
   data() {
     return {
+      phone:'',
       value1: '186', 
       value2: '', 
       value3: '', 
