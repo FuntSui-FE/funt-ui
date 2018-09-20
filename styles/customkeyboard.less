@@ -1,0 +1,156 @@
+@keyboardPrefixCls: funt-number-keyboard;
+@border-color-base: #ddd;
+@keyboard-bg-color:#ffffff;
+@keyboard-btn-color:#2a2b2c;
+@keyboard-disable-color:#e7e6eb;
+// hairline
+.scale-hairline-common(@color, @top, @right, @bottom, @left) {
+  content: '';
+  position: absolute;
+  background-color: @color;
+  display: block;
+  z-index: 1;
+  top: @top;
+  right: @right;
+  bottom: @bottom;
+  left: @left;
+}
+.hairline(@direction, @color: @border-color-base) when (@direction = 'top') {
+  border-top: 1PX solid @color;
+  html:not([data-scale]) & {
+    @media (min-resolution: 2dppx) {
+      border-top: none;
+      &::before {
+        .scale-hairline-common(@color, 0, auto, auto, 0);
+        width: 100%;
+        height: 1PX;
+        transform-origin: 50% 50%;
+        transform: scaleY(0.5);
+        @media (min-resolution: 3dppx) {
+          transform: scaleY(0.33);
+        }
+      }
+    }
+  }
+}
+.hairline(@direction, @color: @border-color-base) when (@direction = 'bottom') {
+  border-bottom: 1PX solid @color;
+  html:not([data-scale]) & {
+    @media (min-resolution: 2dppx) {
+      border-bottom: none;
+      &::after {
+        .scale-hairline-common(@color, auto, auto, 0, 0);
+        width: 100%;
+        height: 1PX;
+        transform-origin: 50% 100%;
+        transform: scaleY(0.5);
+        @media (min-resolution: 3dppx) {
+          transform: scaleY(0.33);
+        }
+      }
+    }
+  }
+}
+.hairline(@direction, @color: @border-color-base) when (@direction = 'left') {
+  border-left: 1PX solid @color;
+  html:not([data-scale]) & {
+    @media (min-resolution: 2dppx) {
+      border-left: none;
+      &::before {
+        .scale-hairline-common(@color, 0, auto, auto, 0);
+        width: 1PX;
+        height: 100%;
+        transform-origin: 100% 50%;
+        transform: scaleX(0.5);
+        @media (min-resolution: 3dppx) {
+          transform: scaleX(0.33);
+        }
+      }
+    }
+  }
+}
+// keyboard ui
+.@{keyboardPrefixCls}-wrapper {
+  user-select: none;
+  -webkit-user-select: none;  
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 200px;
+  z-index: 10000;
+  font-family: 'PingFang SC';
+  background-color: #f6f6f7;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+  -webkit-transition-property: -webkit-transform display;
+  transition-property: -webkit-transform display;
+  transition-property: transform display;
+  transition-property: transform display, -webkit-transform display;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  &.@{keyboardPrefixCls}-wrapper-hide {
+    bottom: -500px;
+  }
+  .@{keyboardPrefixCls}-ul-wrapper{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-collapse: collapse;
+    .hairline('top');
+    .@{keyboardPrefixCls}-item {   
+      text-decoration: none;   
+      list-style-type:none;
+      width: 33.333%;
+      box-sizing: border-box;
+      float:left;
+      padding: 0;
+      margin: 0;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      font-size: 25.5px;
+      color: @keyboard-btn-color;
+      position: relative;
+      &:not(.keyboard-confirm) {
+        .hairline('left');
+        .hairline('bottom');
+      }
+      &:active{
+        background-color: @keyboard-disable-color;
+      }
+      &:hover{
+        text-decoration: none;
+      }
+      &.keyboard-delete {
+        .hairline('bottom');
+        background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22204%22%20height%3D%22148%22%20viewBox%3D%220%200%20153.000000%20111.000000%22%3E%3Cpath%20d%3D%22M46.9%204.7c-2.5%202.6-14.1%2015.5-25.8%2028.6L-.1%2057l25.6%2027%2025.7%2027.1%2047.4-.3%2047.4-.3%203.2-3.3%203.3-3.2V7l-3.3-3.2L146%20.5%2098.7.2%2051.5-.1l-4.6%204.8zm97.9%203.5c1.7%201.7%201.7%2092.9%200%2094.6-.9.9-12.6%201.2-46.3%201.2H53.4L31.2%2080.4%209%2056.9l5.1-5.7c2.8-3.1%2012.8-14.4%2022.2-24.9L53.5%207h45c33.8%200%2045.4.3%2046.3%201.2z%22%2F%3E%3Cpath%20d%3D%22M69.5%2031c-1.9%202.1-1.7%202.2%209.3%2013.3L90%2055.5%2078.8%2066.7%2067.5%2078l2.3%202.2%202.2%202.3%2011.3-11.3L94.5%2060l11.2%2011.2L117%2082.5l2.2-2.3%202.3-2.2-11.3-11.3L99%2055.5l11.2-11.2L121.5%2033l-2.3-2.2-2.2-2.3-11.3%2011.3L94.5%2051l-11-11c-6-6-11.2-11-11.6-11-.3%200-1.4.9-2.4%202z%22%2F%3E%3C%2Fsvg%3E');
+        background-size: 25.5px 18.5px;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-color:@keyboard-disable-color;  
+        &:active{
+          background-color: @keyboard-bg-color;
+        }        
+      }
+      &.keyboard-decimal{
+        background-color:@keyboard-disable-color;  
+        &:active{
+          background-color: @keyboard-bg-color;
+        }
+        &.@{keyboardPrefixCls}-item-disabled {
+          background-color:@keyboard-disable-color;
+          &:active{
+            background-color: @keyboard-disable-color;
+          }
+        } 
+      }
+      &:last-child{
+        td{
+          .hairline('bottom');
+        }
+      }
+    }
+  }
+}
