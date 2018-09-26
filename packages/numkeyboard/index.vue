@@ -2,7 +2,7 @@
   <div class="funt-numkeypad">
     <div class="funt-list-input">
       <div class="funt-input-line">
-        <div class="funt-input-label funt-input-label-5">{{label}}</div>
+        <div class="funt-input-label">{{label}}</div>
         <div v-if="isMobile()" class="funt-input-control" :class="outsideclass" @touchstart="showkeyboard">
           <div class="fake-input-container" :class=" 'fake-input-container-' + textalign">
             <div class="fake-input-placeholder">{{placeholders}}</div>
@@ -116,6 +116,7 @@ export default basic({
     },
     // 聚焦打开键盘
     openkeyboard() {
+      document.activeElement.blur();
       keyboardUids.forEach((item, index) => {
         if (item.CustomKeyBoardId !== this.CustomKeyBoardId) {
           item.flag = false;
@@ -127,8 +128,9 @@ export default basic({
       this.flag = true;
     },
     //打开键盘
-    showkeyboard() {
+    showkeyboard(e) {
       // 打开键盘
+      e.preventDefault();
       let value = this.value;
       if (!keyboard) {
         let CustomKeyBoardDom = document.createElement('div');
