@@ -61,4 +61,20 @@ h4 {
     text-align: center;
   }
 }
+// 自定义输入框样式
+.dddd-phone {
+  /deep/.funt-list-input {
+    .funt-input-line {
+      .funt-input-label {
+        padding: 0;
+        height: 24px;
+        line-height: 24px;
+      }
+      .funt-input-control .fake-input-container {
+        height: 24px;
+        line-height: 24px;
+      }
+    }
+  }
+}
 </style>

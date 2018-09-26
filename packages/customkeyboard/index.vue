@@ -175,6 +175,7 @@ export default basic({
     // 键盘逻辑
     // 键盘事件start
     keyStart(e, keyNum) {
+      e.preventDefault();
       document.activeElement.blur();
       this.money = this.value;
       this.vueTouch.move = true;
