@@ -21,39 +21,39 @@ importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.1/workbox
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "a959fae92f3539c428ab0815d2288750"
+    "revision": "9c36985ba181c8c7c51aa6382aa8d82c"
   },
   {
     "url": "API/install.html",
-    "revision": "b5c3d39d8a5d1816936fd4d34f16491c"
+    "revision": "68c7a230666bc9c61ac3d3b241fa45ca"
   },
   {
     "url": "API/lmarquee.html",
-    "revision": "84306c2fc3f8bcff92ffa8f051c509ce"
+    "revision": "676cf58e84710a77c3f4757b3c207c8a"
   },
   {
     "url": "API/loading.html",
-    "revision": "9aa58df0970b789ed66c8d5a2361d7b4"
+    "revision": "b7a09ad97757297ceae9248492f9a7fb"
   },
   {
     "url": "API/marquee.html",
-    "revision": "862c45d257adb53f786a27ebb488853e"
+    "revision": "0a184c054cc1143f99cd0455ef5eeb4f"
   },
   {
     "url": "API/numkeyboard-demo.html",
-    "revision": "30433cf948201a4f50bd2c69e0c23ea7"
+    "revision": "061931e5ff3ec32ea391ccc8d35de862"
   },
   {
     "url": "API/numkeyboard.html",
-    "revision": "d50debe730cd23597311a797d9418cec"
+    "revision": "d2d470abd0ac3481cfea811177ae14ad"
   },
   {
     "url": "API/scroll.html",
-    "revision": "0da933d285989883ed55f085d617588d"
+    "revision": "f8276a12991e4847ad8522c42219a4f1"
   },
   {
     "url": "API/start.html",
-    "revision": "49c73f5c4c09f68d573db0d39562a57f"
+    "revision": "0e756fa6eb070ca857deea098973cb91"
   },
   {
     "url": "assets/css/1.styles.044bbd72.css",
@@ -84,7 +84,7 @@ self.__precacheManifest = [
     "revision": "1644eb8aa0330124b4180f18f3759eff"
   },
   {
-    "url": "assets/css/8.styles.9c06e601.css",
+    "url": "assets/css/8.styles.440fbcd0.css",
     "revision": "ffe9e5cd3a94c4288d6f9dca0365397c"
   },
   {
@@ -92,7 +92,7 @@ self.__precacheManifest = [
     "revision": "fa0830c6baacacc03cc53bfa3fbfc410"
   },
   {
-    "url": "assets/css/styles.4035d47d.css",
+    "url": "assets/css/styles.f13d7e82.css",
     "revision": "ba2cb4aa04f1837cba6e284456f9e997"
   },
   {
@@ -168,16 +168,16 @@ self.__precacheManifest = [
     "revision": "5cab828b412001d426ac19bfd1ed2c96"
   },
   {
-    "url": "assets/js/8.9c06e601.js",
-    "revision": "f50c0a4e47e06a826b5fd264b5b39f56"
+    "url": "assets/js/8.440fbcd0.js",
+    "revision": "e37e848e364446615677e91598ec728e"
   },
   {
     "url": "assets/js/9.e2d733d3.js",
     "revision": "ff916fb27ad7f387c7c11e187c2737d7"
   },
   {
-    "url": "assets/js/app.4035d47d.js",
-    "revision": "c97c5eec7d8ca6f446adeb11802b1dc5"
+    "url": "assets/js/app.f13d7e82.js",
+    "revision": "86581fadd7678b7b9c06c351eb58fbc2"
   },
   {
     "url": "funt-ui.png",
@@ -185,7 +185,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "5a2e4ac049976cbf38734e1f8e8f5626"
+    "revision": "102070781992a08f4b709951f7e2cb19"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
